@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pdftopic": "^1.0.4-alpha"
+    "pdftopic": "^1.0.4-alpha",
+    "school.hana.js": "^0.0.1"
   }
 }
