@@ -1,0 +1,33 @@
+name: main
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 0 21 * * 0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - run: npm i
+
+      - name: run fetchMeal.mjs
+        run: node fetchMeal.mjs
+        env:
+          SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          
