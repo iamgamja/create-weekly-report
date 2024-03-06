@@ -16,6 +16,6 @@ const embed = new EmbedBuilder()
   .setTitle('Some Title')
   .setColor(0x00FFFF);
 await webhookClient.send({
-  content: res.toString(),
+  content: sch.toString(),
   embeds: [embed],
 });
