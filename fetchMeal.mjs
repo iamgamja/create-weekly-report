@@ -7,7 +7,7 @@ const sch = await school.search({
   SCHUL_NM: process.SCHOOL_NAME,
 })[0]
     
-const res = school.meal({
+const res = await school.meal({
   ...sch,
   
 })
