@@ -13,9 +13,9 @@ const res = school.meal({
 })
 
 const embed = new EmbedBuilder()
-	.setTitle('Some Title')
-	.setColor(0x00FFFF);
+  .setTitle('Some Title')
+  .setColor(0x00FFFF);
 await webhookClient.send({
   content: res.toString(),
-	embeds: [embed],
+  embeds: [embed],
 });
