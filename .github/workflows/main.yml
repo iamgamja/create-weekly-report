@@ -41,3 +41,5 @@ jobs:
           source_paths: 'main.typ'
           output_paths: 'main.pdf'
           fonts_path: 'fonts'
+
+      - run: node createPng.mjs
