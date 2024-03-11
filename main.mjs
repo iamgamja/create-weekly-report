@@ -38,6 +38,7 @@ for (const d of days)
 
 const get = o => new Promise((res, rej) => {
   request.get(o, (e, r, b) => {
+    console.log(b)
     if (e) rej(e)
     else res(JSON.parse(b))
   })
