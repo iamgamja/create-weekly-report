@@ -25,9 +25,12 @@ jobs:
 
       - run: npm i
 
-      - name: run fetchMeal.mjs
-        run: node fetchMeal.mjs
+      - name: run main.mjs
+        run: node main.mjs
         env:
-          SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          
+          NX: ${{ secrets.NX }}
+          NY: ${{ secrets.NY }}
+          REGID: ${{ secrets.REGID }}
+          SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
+          SERVICEKEY: ${{ secrets.SERVICEKEY }}
