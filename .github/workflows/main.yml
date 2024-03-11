@@ -42,4 +42,4 @@ jobs:
           output_paths: 'main.pdf'
           fonts_path: 'fonts'
 
-      - run: node createPng.mjs
+      - run: node sendPng.mjs
