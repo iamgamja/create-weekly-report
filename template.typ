@@ -1,4 +1,4 @@
-#set text(font: "Pretendard", size: 16pt)
+#set text(font: ("Pretendard", "Noto Color Emoji"), size: 16pt)
 #set page(margin: 30pt)
 #show heading: it => [
   #set align(center)
