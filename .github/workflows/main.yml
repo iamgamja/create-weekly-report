@@ -41,6 +41,8 @@ jobs:
           output_paths: 'main.pdf'
           fonts_path: 'fonts'
 
+      - run: apt-get update && apt-get install imagemagick
+
       - run: node sendPng.mjs
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
