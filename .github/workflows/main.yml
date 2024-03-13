@@ -8,7 +8,7 @@ on:
     - cron: 0 22 * * 0
 
 jobs:
-  build:
+  main:
     runs-on: ubuntu-latest
 
     strategy:
@@ -41,7 +41,8 @@ jobs:
           output_paths: 'main.pdf'
           fonts_path: 'fonts'
 
-      - run: apt-get update && apt-get install imagemagick
+      - run: echo ${{ secrets.USERPWD }} | sudo apt-get update
+      - run: echo ${{ secrets.USERPWD }} | sudo apt-get install imagemagick
 
       - run: node sendPng.mjs
         env:
