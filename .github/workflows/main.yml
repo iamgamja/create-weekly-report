@@ -11,23 +11,17 @@ jobs:
   main:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+
+      - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          node-version: '16.x'
 
       - run: npm i
 
       - run: node main.mjs
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           NX: ${{ secrets.NX }}
           NY: ${{ secrets.NY }}
           REGID: ${{ secrets.REGID }}
@@ -41,14 +35,6 @@ jobs:
           output_paths: 'main.pdf'
           fonts_path: 'fonts'
 
-      - run: echo ${{ secrets.USERPWD }} | sudo apt-get update
-      - run: echo ${{ secrets.USERPWD }} | sudo apt-get install imagemagick
-
       - run: node sendPng.mjs
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          NX: ${{ secrets.NX }}
-          NY: ${{ secrets.NY }}
-          REGID: ${{ secrets.REGID }}
-          SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
-          SERVICEKEY: ${{ secrets.SERVICEKEY }}
