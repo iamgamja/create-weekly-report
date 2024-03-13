@@ -12,7 +12,6 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
     "pdf-img-convert": "^1.2.1",
-    "pdftopic": "^1.0.4-alpha",
     "request": "^2.88.2",
     "school.hana.js": "^0.0.1"
   }
