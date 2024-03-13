@@ -24,7 +24,7 @@
 = 이번주 주번: #{(today - baseday).weeks()*2+1},#{(today - baseday).weeks()*2+2}번
 
 #table(
-  columns: (auto, 1fr),
+  columns: (auto, 1fr, auto, 1fr),
   align: (x, y) => {
     if (x==0) { center }
     else { auto }
