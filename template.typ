@@ -7,9 +7,9 @@
 ]
 
 #let emojiNameDict = (
-  "🌤️": image("assets/1f324.png", width: 10pt),
-  "🌧️": image("assets/1f327.png", width: 10pt),
-  "🌨️": image("assets/1f328.png", width: 10pt),
+  "🌤️": image("assets/1f324.png", width: 30pt),
+  "🌧️": image("assets/1f327.png", width: 30pt),
+  "🌨️": image("assets/1f328.png", width: 30pt),
 )
 
 // generated code start
