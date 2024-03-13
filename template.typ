@@ -1,4 +1,4 @@
-#set text(font: ("Pretendard", "Noto Color Emoji"), size: 16pt)
+#set text(font: "Pretendard", size: 16pt)
 #set page(margin: 30pt)
 #show heading: it => [
   #set align(center)
@@ -7,9 +7,9 @@
 ]
 
 #let emojiNameDict = (
-  "🌤️": emoji.cloud.sun,
-  "🌧️": emoji.cloud.sun,
-  "🌨️": emoji.cloud.sun,
+  "🌤️": image("assets/1f324.png"),
+  "🌧️": image("assets/1f327.png"),
+  "🌨️": image("assets/1f328.png"),
 )
 
 // generated code start
