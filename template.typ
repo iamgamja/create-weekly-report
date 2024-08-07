@@ -21,7 +21,7 @@
 #let today = datetime.today(offset: 9)
 #let days = range(0, 5).map(i => today + duration(days: i))
 
-#let d = 36
+#let d = 34
 = 이번주 주번: #{(today - baseday).weeks()*2+1 - d},#{(today - baseday).weeks()*2+2 - d}번
 
 #table(
