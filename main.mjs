@@ -40,7 +40,13 @@ const get = o => new Promise((res, rej) => {
   request.get(o, (e, r, b) => {
     console.log(b)
     if (e) rej(e)
-    else res(JSON.parse(b))
+    else {
+      try {
+        res(JSON.parse(b))
+      } catch(e) {
+        rej(e)
+      }
+    }
   })
 })
 
@@ -93,7 +99,9 @@ try {
   const items2 = resp2.response.body.items.item[0]
   predicts.push(getEmoji(items2.wf3Am))
   predicts.push(getEmoji(items2.wf4Am))
-} catch {}
+} catch {
+  while (predicts.length < 5) predicts.push('')
+}
 
 const template = fs.readFileSync('template.typ').toString()
 const context = template
