@@ -54,44 +54,46 @@ function getEmoji(x) {
   return '🌤️'
 }
 
-const resp1 = await get({
-  uri: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst',
-  qs: {
-    ServiceKey: process.env.SERVICEKEY,
-    pageNo: 1,
-    numOfRows: 1000,
-    dataType: 'JSON',
-    base_date: formatDate(today),
-    base_time: '0500',
-    nx: process.env.NX,
-    ny: process.env.NY,
-  }
-})
-const items = resp1.response.body.items.item
 const predicts = []
-for (let i=0; i<3; i++)
-  predicts.push(
-    getEmoji(
-      items
-        .find(x => x.category === 'PTY' && x.fcstDate === formatDate(days[i]) && x.fcstTime === '0600')
-        .fcstValue
+try {
+  const resp1 = await get({
+    uri: 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst',
+    qs: {
+      ServiceKey: process.env.SERVICEKEY,
+      pageNo: 1,
+      numOfRows: 1000,
+      dataType: 'JSON',
+      base_date: formatDate(today),
+      base_time: '0500',
+      nx: process.env.NX,
+      ny: process.env.NY,
+    }
+  })
+  const items = resp1.response.body.items.item
+  for (let i=0; i<3; i++)
+    predicts.push(
+      getEmoji(
+        items
+          .find(x => x.category === 'PTY' && x.fcstDate === formatDate(days[i]) && x.fcstTime === '0600')
+          .fcstValue
+      )
     )
-  )
 
-const resp2 = await get({
-  uri: 'http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst',
-  qs: {
-    serviceKey: process.env.SERVICEKEY,
-    numOfRows: 10,
-    pageNo: 1,
-    dataType: 'JSON',
-    regId: process.env.REGID,
-    tmFc: formatDate(today) + '0600'
-  }
-})
-const items2 = resp2.response.body.items.item[0]
-predicts.push(getEmoji(items2.wf3Am))
-predicts.push(getEmoji(items2.wf4Am))
+  const resp2 = await get({
+    uri: 'http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst',
+    qs: {
+      serviceKey: process.env.SERVICEKEY,
+      numOfRows: 10,
+      pageNo: 1,
+      dataType: 'JSON',
+      regId: process.env.REGID,
+      tmFc: formatDate(today) + '0600'
+    }
+  })
+  const items2 = resp2.response.body.items.item[0]
+  predicts.push(getEmoji(items2.wf3Am))
+  predicts.push(getEmoji(items2.wf4Am))
+} catch {}
 
 const template = fs.readFileSync('template.typ').toString()
 const context = template
