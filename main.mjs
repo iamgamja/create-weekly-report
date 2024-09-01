@@ -6,6 +6,7 @@ import fs from 'fs'
 const sch = (await school.search({
   SCHUL_NM: process.env.SCHOOL_NAME,
 }))[0]
+console.log(sch)
 
 function formatDate(date) {
   return `${date.getFullYear()}${(date.getMonth()+1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}`
@@ -13,6 +14,11 @@ function formatDate(date) {
 
 async function fetchMeal(date) {
   try {
+    console.log(await school.meal({
+      ...sch,
+      MLSV_YMD: formatDate(date)
+    }))
+    
     const res = (await school.meal({
       ...sch,
       MLSV_YMD: formatDate(date)
