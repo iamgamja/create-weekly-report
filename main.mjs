@@ -19,7 +19,8 @@ async function fetchMeal(date) {
     }))?.[0]?.DDISH_NM?.replaceAll(/ ?\([0-9.]+\)/g, '')?.replaceAll(/<br\/>/g, '\n')
 
     return res ?? ''
-  } catch {
+  } catch (e) {
+    console.error(e)
     return ''
   }
 }
@@ -99,7 +100,8 @@ try {
   const items2 = resp2.response.body.items.item[0]
   predicts.push(getEmoji(items2.wf3Am))
   predicts.push(getEmoji(items2.wf4Am))
-} catch {
+} catch (e) {
+  console.error(e)
   while (predicts.length < 5) predicts.push('')
 }
 
