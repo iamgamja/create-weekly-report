@@ -18,6 +18,7 @@ async function fetchMeal(date) {
       MLSV_YMD: formatDate(date)
     }))?.[0]?.DDISH_NM?.replaceAll(/ ?\([0-9.]+\)/g, '')?.replaceAll(/<br\/>/g, '\n')
 
+    console.log(res)
     return res ?? ''
   } catch (e) {
     console.error(e)
@@ -39,7 +40,6 @@ for (const d of days)
 
 const get = o => new Promise((res, rej) => {
   request.get(o, (e, r, b) => {
-    console.log(b)
     if (e) rej(e)
     else {
       try {
@@ -100,6 +100,8 @@ try {
   const items2 = resp2.response.body.items.item[0]
   predicts.push(getEmoji(items2.wf3Am))
   predicts.push(getEmoji(items2.wf4Am))
+
+  console.log(predicts)
 } catch (e) {
   console.error(e)
   while (predicts.length < 5) predicts.push('')
