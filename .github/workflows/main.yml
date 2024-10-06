@@ -28,14 +28,7 @@ jobs:
           SCHOOL_NAME: ${{ secrets.SCHOOL_NAME }}
           SERVICEKEY: ${{ secrets.SERVICEKEY }}
 
-      # - name: Compile Typst File
-      #   uses: ammar-ahmed22/compile-typst-action@v1
-      #   with:
-      #     source_paths: 'main.typ'
-      #     output_paths: 'main.pdf'
-      #     fonts_path: 'fonts'
-
-      - run: npx typst compile main.typ main.pdf
+      - run: npx typst compile main.typ main.pdf --font-path fonts
 
       - run: node sendPng.mjs
         env:
